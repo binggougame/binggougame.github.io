@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakaratini - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #9370db;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section h3 {
+            color: #9370db;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #9370db;
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: #9370db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn:hover {
+            background: #7a5bc7;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .item-card {
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        
+        .color-input {
+            width: 60px !important;
+            height: 40px;
+            padding: 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .preview-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .preview-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bakaratini Admin Panel</h1>
+            <p>Configure your website content and settings</p>
+            <div id="configStatus" style="margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 5px; font-size: 14px;">
+                Loading configuration...
+            </div>
+        </div>
+
+        <!-- Site Information -->
+        <div class="section">
+            <h3>Site Information</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="siteTitle">Site Title</label>
+                    <input type="text" id="siteTitle" placeholder="Bakaratini">
+                </div>
+                <div class="form-group">
+                    <label for="siteSubtitle">Subtitle</label>
+                    <input type="text" id="siteSubtitle" placeholder="A passionate software development team">
+                </div>
+                <div class="form-group">
+                    <label for="siteDescription">Description</label>
+                    <textarea id="siteDescription" placeholder="with a strong enthusiasm for creating innovative and efficient solutions."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="siteEmail">Email</label>
+                    <input type="email" id="siteEmail" placeholder="contact@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="sitePhone">Phone</label>
+                    <input type="text" id="sitePhone" placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="siteLocation">Location</label>
+                    <input type="text" id="siteLocation" placeholder="Remote Worldwide">
+                </div>
+                <div class="form-group">
+                    <label for="homeImage">Home Image Path</label>
+                    <input type="text" id="homeImage" placeholder="images/bakaratini.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="ctaText">CTA Button Text</label>
+                    <input type="text" id="ctaText" placeholder="Start Your Journey 🚀">
+                </div>
+                <div class="form-group">
+                    <label for="ctaLink">CTA Button Link</label>
+                    <input type="text" id="ctaLink" placeholder="mailto:contact@example.com">
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Colors -->
+        <div class="section">
+            <h3>Theme Colors</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="primaryColor">Primary Color</label>
+                    <input type="color" id="primaryColor" class="color-input" value="#9370db">
+                </div>
+                <div class="form-group">
+                    <label for="backgroundColor">Background Color</label>
+                    <input type="color" id="backgroundColor" class="color-input" value="#10101a">
+                </div>
+                <div class="form-group">
+                    <label for="textColor">Text Color</label>
+                    <input type="color" id="textColor" class="color-input" value="#ffffff">
+                </div>
+                <div class="form-group">
+                    <label for="secondaryTextColor">Secondary Text Color</label>
+                    <input type="color" id="secondaryTextColor" class="color-input" value="#ffffffcc">
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h3>Contact Information</h3>
+            <div class="grid">
+                <div class="form-group">
+                    <label for="contactTitle">Contact Section Title</label>
+                    <input type="text" id="contactTitle" placeholder="Let's Create Magic Together ✨">
+                </div>
+                <div class="form-group">
+                    <label for="contactSubtitle">Contact Section Subtitle</label>
+                    <textarea id="contactSubtitle" placeholder="Ready to transform your vision into reality?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Contact Email</label>
+                    <input type="email" id="contactEmail" placeholder="contact@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Contact Phone</label>
+                    <input type="text" id="contactPhone" placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="contactLocation">Contact Location</label>
+                    <input type="text" id="contactLocation" placeholder="Remote Worldwide">
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="section">
+            <h3>Navigation Menu</h3>
+            <div id="navigationContainer"></div>
+            <button class="btn" onclick="addNavItem()">Add Navigation Item</button>
+        </div>
+
+        <!-- Products Management -->
+        <div class="section">
+            <h3>Products</h3>
+            <div id="productsContainer"></div>
+            <button class="btn" onclick="addProduct()">Add Product</button>
+        </div>
+
+        <!-- Social Links -->
+        <div class="section">
+            <h3>Social Links</h3>
+            <div id="socialLinksContainer"></div>
+            <button class="btn" onclick="addSocialLink()">Add Social Link</button>
+        </div>
+
+        <!-- Actions -->
+        <div class="section">
+            <h3>Actions</h3>
+            <button class="btn" onclick="saveConfig()">Save Configuration</button>
+            <button class="btn btn-secondary" onclick="loadConfig()">Load Current Config</button>
+            <button class="btn btn-secondary" onclick="resetConfig()">Reset to Default</button>
+        </div>
+
+        <button class="preview-btn" onclick="previewSite()">Preview Site</button>
+    </div>
+
+    <script>
+        let currentConfig = {};
+
+        // Load configuration on page load
+        document.addEventListener('DOMContentLoaded', loadConfig);
+        window.addEventListener('load', loadConfig);
+
+        async function loadConfig() {
+            const statusEl = document.getElementById('configStatus');
+            try {
+                if (statusEl) statusEl.textContent = 'Loading configuration...';
+                const response = await fetch('html_configs.json');
+                currentConfig = await response.json();
+                console.log('Configuration loaded:', currentConfig);
+                if (statusEl) statusEl.innerHTML = `✅ Configuration loaded successfully! Site: <strong>${currentConfig.siteInfo?.title || 'Unknown'}</strong>`;
+                populateForm();
+            } catch (error) {
+                console.error('Failed to load configuration:', error);
+                if (statusEl) statusEl.innerHTML = `❌ Failed to load configuration: ${error.message}`;
+                resetConfig();
+            }
+        }
+
+        function populateForm() {
+            console.log('Populating form with config:', currentConfig);
+            const statusEl = document.getElementById('configStatus');
+            
+            try {
+                // Site info
+                const elements = {
+                    'siteTitle': currentConfig.siteInfo?.title || '',
+                    'siteSubtitle': currentConfig.siteInfo?.subtitle || '',
+                    'siteDescription': currentConfig.siteInfo?.description || '',
+                    'siteEmail': currentConfig.siteInfo?.email || '',
+                    'sitePhone': currentConfig.siteInfo?.phone || '',
+                    'siteLocation': currentConfig.siteInfo?.location || '',
+                    'homeImage': currentConfig.siteInfo?.homeImage || '',
+                    'ctaText': currentConfig.siteInfo?.ctaText || '',
+                    'ctaLink': currentConfig.siteInfo?.ctaLink || ''
+                };
+                
+                let populatedCount = 0;
+                for (const [id, value] of Object.entries(elements)) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.value = value;
+                        populatedCount++;
+                    } else {
+                        console.warn(`Element ${id} not found`);
+                    }
+                }
+                
+                console.log(`Populated ${populatedCount} site info fields`);
+                 if (statusEl) statusEl.innerHTML += ` | Site fields: ${populatedCount}/9`;
+                 
+                 // Contact info
+                 const contactElements = {
+                     'contactTitle': currentConfig.contact?.title || '',
+                     'contactSubtitle': currentConfig.contact?.subtitle || '',
+                     'contactEmail': currentConfig.contact?.email || '',
+                     'contactPhone': currentConfig.contact?.phone || '',
+                     'contactLocation': currentConfig.contact?.location || ''
+                 };
+                 
+                 let contactCount = 0;
+                 for (const [id, value] of Object.entries(contactElements)) {
+                     const element = document.getElementById(id);
+                     if (element) {
+                         element.value = value;
+                         contactCount++;
+                     }
+                 }
+                 
+                 // Theme colors
+                 const themeElements = {
+                     'primaryColor': currentConfig.theme?.primaryColor || '#9370db',
+                     'backgroundColor': currentConfig.theme?.backgroundColor || '#10101a',
+                     'textColor': currentConfig.theme?.textColor || '#ffffff',
+                     'secondaryTextColor': currentConfig.theme?.secondaryTextColor || '#ffffffcc'
+                 };
+                 
+                 let themeCount = 0;
+                 for (const [id, value] of Object.entries(themeElements)) {
+                     const element = document.getElementById(id);
+                     if (element) {
+                         element.value = value;
+                         themeCount++;
+                     }
+                 }
+                 
+                 console.log(`Total populated: Site ${populatedCount}/9, Contact ${contactCount}/5, Theme ${themeCount}/4`);
+                 if (statusEl) statusEl.innerHTML += ` | Contact: ${contactCount}/5 | Theme: ${themeCount}/4`;
+                 
+            } catch (error) {
+                console.error('Error populating form:', error);
+                if (statusEl) statusEl.innerHTML += ' | ❌ Error populating form';
+            }
+            
+            // Render dynamic sections
+            renderNavigation();
+            renderProducts();
+            renderSocialLinks();
+        }
+
+        function renderNavigation() {
+            const container = document.getElementById('navigationContainer');
+            container.innerHTML = '';
+            
+            if (currentConfig.navigation) {
+                currentConfig.navigation.forEach((nav, index) => {
+                    const navDiv = document.createElement('div');
+                    navDiv.className = 'item-card';
+                    navDiv.innerHTML = `
+                        <div class="form-group">
+                            <label>Menu Name</label>
+                            <input type="text" value="${nav.name}" onchange="updateNavigation(${index}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Link (href)</label>
+                            <input type="text" value="${nav.href}" onchange="updateNavigation(${index}, 'href', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Target</label>
+                            <select onchange="updateNavigation(${index}, 'target', this.value)">
+                                <option value="" ${!nav.target ? 'selected' : ''}>Same Window</option>
+                                <option value="_blank" ${nav.target === '_blank' ? 'selected' : ''}>New Window</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-secondary" onclick="removeNavigation(${index})">Remove Item</button>
+                    `;
+                    container.appendChild(navDiv);
+                });
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
+            
+            if (currentConfig.products) {
+                currentConfig.products.forEach((product, index) => {
+                    const productDiv = document.createElement('div');
+                    productDiv.className = 'item-card';
+                    productDiv.innerHTML = `
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" value="${product.name}" onchange="updateProduct(${index}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea onchange="updateProduct(${index}, 'description', this.value)">${product.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Image Path</label>
+                            <input type="text" value="${product.icon}" onchange="updateProduct(${index}, 'icon', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Background Image Path</label>
+                            <input type="text" value="${product.background}" onchange="updateProduct(${index}, 'background', this.value)">
+                        </div>
+                        <button class="btn btn-secondary" onclick="removeProduct(${index})">Remove Product</button>
+                    `;
+                    container.appendChild(productDiv);
+                });
+            }
+        }
+
+        function renderSocialLinks() {
+            const container = document.getElementById('socialLinksContainer');
+            container.innerHTML = '';
+            
+            if (currentConfig.contact?.socialLinks) {
+                currentConfig.contact.socialLinks.forEach((social, index) => {
+                    const socialDiv = document.createElement('div');
+                    socialDiv.className = 'item-card';
+                    socialDiv.innerHTML = `
+                        <div class="form-group">
+                            <label>Platform Name</label>
+                            <input type="text" value="${social.name}" onchange="updateSocialLink(${index}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>URL</label>
+                            <input type="text" value="${social.url}" onchange="updateSocialLink(${index}, 'url', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Icon Class (FontAwesome)</label>
+                            <input type="text" value="${social.icon}" onchange="updateSocialLink(${index}, 'icon', this.value)">
+                        </div>
+                        <button class="btn btn-secondary" onclick="removeSocialLink(${index})">Remove Link</button>
+                    `;
+                    container.appendChild(socialDiv);
+                });
+            }
+        }
+
+        function updateNavigation(index, field, value) {
+            if (!currentConfig.navigation) currentConfig.navigation = [];
+            currentConfig.navigation[index][field] = value;
+        }
+
+        function updateProduct(index, field, value) {
+            if (!currentConfig.products) currentConfig.products = [];
+            currentConfig.products[index][field] = value;
+        }
+
+        function updateSocialLink(index, field, value) {
+            if (!currentConfig.contact) currentConfig.contact = {};
+            if (!currentConfig.contact.socialLinks) currentConfig.contact.socialLinks = [];
+            currentConfig.contact.socialLinks[index][field] = value;
+        }
+
+        function addNavItem() {
+            if (!currentConfig.navigation) currentConfig.navigation = [];
+            currentConfig.navigation.push({
+                name: 'New Menu',
+                href: '#section'
+            });
+            renderNavigation();
+        }
+
+        function addProduct() {
+            if (!currentConfig.products) currentConfig.products = [];
+            currentConfig.products.push({
+                name: 'New Product',
+                description: 'Product description here...',
+                icon: 'images/item1.png',
+                background: 'images/item_bg1.jpg'
+            });
+            renderProducts();
+        }
+
+        function addSocialLink() {
+            if (!currentConfig.contact) currentConfig.contact = {};
+            if (!currentConfig.contact.socialLinks) currentConfig.contact.socialLinks = [];
+            currentConfig.contact.socialLinks.push({
+                name: 'New Platform',
+                url: 'https://example.com',
+                icon: 'fab fa-globe'
+            });
+            renderSocialLinks();
+        }
+
+        function removeNavigation(index) {
+            currentConfig.navigation.splice(index, 1);
+            renderNavigation();
+        }
+
+        function removeProduct(index) {
+            currentConfig.products.splice(index, 1);
+            renderProducts();
+        }
+
+        function removeSocialLink(index) {
+             currentConfig.contact.socialLinks.splice(index, 1);
+             renderSocialLinks();
+         }
+
+        async function saveConfig() {
+            // Update config with form values
+            currentConfig.siteInfo = {
+                title: document.getElementById('siteTitle').value,
+                subtitle: document.getElementById('siteSubtitle').value,
+                description: document.getElementById('siteDescription').value,
+                email: document.getElementById('siteEmail').value,
+                phone: document.getElementById('sitePhone').value,
+                location: document.getElementById('siteLocation').value,
+                homeImage: document.getElementById('homeImage').value,
+                ctaText: document.getElementById('ctaText').value,
+                ctaLink: document.getElementById('ctaLink').value
+            };
+
+            // Update contact info
+            if (!currentConfig.contact) currentConfig.contact = {};
+            currentConfig.contact.title = document.getElementById('contactTitle').value;
+            currentConfig.contact.subtitle = document.getElementById('contactSubtitle').value;
+            currentConfig.contact.email = document.getElementById('contactEmail').value;
+            currentConfig.contact.phone = document.getElementById('contactPhone').value;
+            currentConfig.contact.location = document.getElementById('contactLocation').value;
+
+            currentConfig.theme = {
+                primaryColor: document.getElementById('primaryColor').value,
+                backgroundColor: document.getElementById('backgroundColor').value,
+                textColor: document.getElementById('textColor').value,
+                secondaryTextColor: document.getElementById('secondaryTextColor').value
+            };
+
+            // Ensure sections exist
+            if (!currentConfig.sections) {
+                currentConfig.sections = {
+                    home: { title: "Our Products", showSection: true },
+                    products: { title: "Our Products", showSection: true },
+                    contact: { title: "Get In Touch", showSection: true }
+                };
+            }
+
+            // Save configuration directly to server
+            try {
+                const response = await fetch('http://localhost:8001/save-config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(currentConfig, null, 2)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('Configuration saved successfully! Changes will take effect immediately.');
+                    // Reload configuration to maintain data sync
+                    await loadConfig();
+                    // Reload the page to reflect changes
+                    window.location.reload();
+                } else {
+                    throw new Error(result.message || 'Failed to save configuration');
+                }
+            } catch (error) {
+                console.error('Save error:', error);
+                alert('Failed to save configuration: ' + error.message + '\n\nFalling back to download method...');
+                
+                // Fallback to download method
+                const dataStr = JSON.stringify(currentConfig, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'html_configs.json';
+                link.click();
+                
+                alert('Configuration downloaded! Please replace the html_configs.json file in your website directory with the downloaded file.');
+            }
+        }
+
+        function resetConfig() {
+            currentConfig = {
+                siteInfo: {
+                    title: "DRILLING AND PUMP",
+                    subtitle: "🚀 Next-Gen Solutions for Tomorrow's World",
+                    description: "Crafting cutting-edge experiences that push boundaries and redefine possibilities.",
+                    email: "contact@example.com",
+                    phone: "+1 (555) 123-4567",
+                    location: "Remote Worldwide",
+                    homeImage: "images/bakaratini.jpg",
+                    ctaText: "Start Your Journey 🚀",
+                    ctaLink: "mailto:contact@example.com"
+                },
+                sections: {
+                    home: { title: "Our Products", showSection: true },
+                    products: { title: "Our Products", showSection: true },
+                    contact: { title: "Get In Touch", showSection: true }
+                },
+                contact: {
+                    title: "Let's Create Magic Together ✨",
+                    subtitle: "Ready to transform your vision into reality? Drop us a line and let's build something extraordinary!",
+                    email: "contact@example.com",
+                    phone: "+1 (555) 123-4567",
+                    location: "Remote Worldwide",
+                    socialLinks: [
+                        { name: "GitHub", url: "https://github.com", icon: "fab fa-github" },
+                        { name: "Twitter", url: "https://twitter.com", icon: "fab fa-twitter" },
+                        { name: "LinkedIn", url: "https://linkedin.com", icon: "fab fa-linkedin" }
+                    ]
+                },
+                navigation: [
+                    { name: "Home", href: "#home" },
+                    { name: "Products", href: "#products" },
+                    { name: "Contact", href: "#contact" },
+                    { name: "Terms", href: "TermsofService.html", target: "_blank" },
+                    { name: "Privacy Policy", href: "privacypolicy.html", target: "_blank" }
+                ],
+                products: [
+                    {
+                        name: "HyperPlugin 🔥",
+                        description: "Revolutionary dev tool that supercharges your workflow with lightning-fast performance and mind-blowing integrations. Experience coding like never before!",
+                        icon: "images/item1.png",
+                        background: "images/item_bg1.jpg"
+                    },
+                    {
+                        name: "CodeAssist AI 🤖",
+                        description: "Your genius coding companion powered by next-gen AI. Write flawless code at warp speed with intelligent suggestions that read your mind!",
+                        icon: "images/item2.png",
+                        background: "images/item_bg2.jpg"
+                    }
+                ],
+                theme: {
+                    primaryColor: "#9370db",
+                    backgroundColor: "#10101a",
+                    textColor: "#ffffff",
+                    secondaryTextColor: "#ffffffcc"
+                }
+            };
+            populateForm();
+        }
+
+        function previewSite() {
+            window.open('index.html', '_blank');
+        }
+    </script>
+</body>
+</html>
