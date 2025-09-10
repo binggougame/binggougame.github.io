@@ -1,14 +1,14 @@
 {
   "siteInfo": {
-    "title": "DRILLING AND PUMP",
+    "title": "Bing Gou Game Team",
     "subtitle": "If you have any questions about this policy, contact us. ",
     "description": "Please be sure to include your personal name (and the full company name, if you are inquiring on behalf of such company), address and email address in any correspondence to us so that we can respond to your inquiry in a timely manner.",
-    "email": "LatoyiaAskamnr@gmail.com",
-    "phone": "+1 (555) 123-4567",
-    "location": "Remote Worldwide",
-    "homeImage": "images/bakaratini.jpg",
-    "ctaText": "Start Your Journey 🚀",
-    "ctaLink": "mailto:LatoyiaAskamnr@gmail.com"
+    "email": "bggamedevteam@gmail.com",
+    "phone": "",
+    "location": "Contact via e-mail",
+    "homeImage": "images/main_pic.jpg",
+    "ctaText": "Start Now 🚀",
+    "ctaLink": "mailto:bggamedevteam@gmail.com"
   },
   "sections": {
     "home": {
@@ -27,9 +27,9 @@
   "contact": {
     "title": "Let's Create Magic Together ✨",
     "subtitle": "Ready to transform your vision into reality? Drop us a line and let's build something extraordinary!",
-    "email": "LatoyiaAskamnr@gmail.com",
-    "phone": "+1 (555) 123-4567",
-    "location": "Remote Worldwide",
+    "email": "bggamedevteam@gmail.com",
+    "phone": "",
+    "location": "Contact via e-mail",
     "socialLinks": [
       {
         "name": "GitHub",
@@ -74,14 +74,14 @@
   ],
   "products": [
     {
-      "name": "HyperPlugin 🔥",
-      "description": "Revolutionary dev tool that supercharges your workflow with lightning-fast performance and mind-blowing integrations. Experience coding like never before!",
+      "name": "Candy click click 🔥",
+      "description": "We will create a new candy game, waiting now.",
       "icon": "images/item1.png",
       "background": "images/item_bg1.jpg"
     },
     {
-      "name": "CodeAssist AI 🤖",
-      "description": "Your genius coding companion powered by next-gen AI. Write flawless code at warp speed with intelligent suggestions that read your mind!",
+      "name": "Fruit & Story 🤖",
+      "description": "We will create a new stroy game, waiting now.",
       "icon": "images/item2.png",
       "background": "images/item_bg2.jpg"
     }
