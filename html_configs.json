@@ -74,14 +74,14 @@
   ],
   "products": [
     {
-      "name": "Candy click click 🔥",
+      "name": "Tile Fruit Tap 🔥",
       "description": "We will create a new candy game, waiting now.",
       "icon": "images/item1.png",
       "background": "images/item_bg1.jpg"
     },
     {
-      "name": "Fruit & Story 🤖",
-      "description": "We will create a new stroy game, waiting now.",
+      "name": "New Game 🤖",
+      "description": "New game is developing, waiting now.",
       "icon": "images/item2.png",
       "background": "images/item_bg2.jpg"
     }
