@@ -1,2 +1,6 @@
 google.com, pub-8452634063370131, DIRECT, f08c47fec0942fa0
-facebook.com, 1687897002269637, DIRECT, c3e20eee3f780d68
+
+# for chuan yin cooperate platform config
+google.com, pub-7112055678212370, DIRECT, f08c47fec0942fa0
+google.com, pub-3803436775068007, DIRECT, f08c47fec0942fa0
+# end for chuan yin
