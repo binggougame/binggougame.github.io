@@ -4,3 +4,6 @@ google.com, pub-8452634063370131, DIRECT, f08c47fec0942fa0
 google.com, pub-7112055678212370, DIRECT, f08c47fec0942fa0
 google.com, pub-3803436775068007, DIRECT, f08c47fec0942fa0
 # end for chuan yin
+
+# fb for GT155 ziyou fb act
+facebook.com, 1992322965039888, DIRECT, c3e20eee3f780d68
